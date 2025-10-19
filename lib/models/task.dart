@@ -1,9 +1,16 @@
+
 enum Priority { low, medium, high }
 
+
 class Task {
+  
   String id;
+
   String name;
+
   bool done;
+
+  
   Priority priority;
 
   Task({
@@ -13,17 +20,23 @@ class Task {
     this.priority = Priority.medium,
   });
 
-  factory Task.fromJson(Map<String,dynamic> j) => Task(
-    id: j['id'],
-    name: j['name'],
-    done: j['done'],
-    priority: Priority.values[j['priority']],
-  );
+  
+  factory Task.fromJson(Map<String, dynamic> json) {
+    return Task(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      done: json['done'] as bool,
+      priority: Priority.values[json['priority'] as int],
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'done': done,
-    'priority': priority.index,
-  };
+  
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'done': done,
+      'priority': priority.index,
+    };
+  }
 }
