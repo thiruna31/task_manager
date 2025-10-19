@@ -36,7 +36,7 @@ class Task {
       'id': id,
       'name': name,
       'done': done,
-      'priority': priority.index,
+      'prioriy': priority.index,
     };
   }
 }
